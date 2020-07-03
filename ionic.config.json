@@ -1,0 +1,7 @@
+{
+  "name": "stacksintabs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
