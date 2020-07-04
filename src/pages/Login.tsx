@@ -44,6 +44,9 @@ const Login: React.FC<LoginProps> = ({ isAuthed = false }) => {
         >
           Login
         </IonButton>
+        <p>
+          Don't have an account? <a href="/register">Register</a> here
+        </p>
       </IonContent>
     </IonPage>
   );

@@ -40,7 +40,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 const App: React.FC = () => {
-  const isAuthed = true;
+  const isAuthed = false;
   return (
     <IonApp>
       <IonReactRouter>
