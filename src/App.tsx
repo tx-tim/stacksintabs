@@ -6,7 +6,7 @@ import {
   useContext,
   useEffect,
 } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -38,23 +38,44 @@ import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
+import { Context } from "./Context";
 
 const App: React.FC = () => {
-  const isAuthed = false;
+  const [context, setContext] = useState({ isAuthed: false });
+  useEffect(() => {
+    console.log("app level context", context);
+  });
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route
-            exact
-            path="/hio"
-            render={(props) => {
-              return isAuthed ? <Hio /> : <Login />;
-            }}
-          />
-          <Route path="/" render={() => <Redirect to="/hio" />} exact={true} />
-        </IonRouterOutlet>
-      </IonReactRouter>
+      <Context.Provider value={[context, setContext]}>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Switch>
+              {/* <Route
+              exact
+              path="/hio"
+              render={(props) => {
+                return context.isAuthed ? <Hio /> : <Login />;
+              }}
+            /> */}
+              <Route path="/login" component={Login} exact />
+              <Route path="/hio" component={Hio} exact />
+              <Route
+                path="/"
+                exact
+                render={() => {
+                  console.log("router isAuthed", context.isAuthed);
+                  return context.isAuthed ? (
+                    <Redirect to="/hio" />
+                  ) : (
+                    <Redirect to="/login" />
+                  );
+                }}
+              />
+            </Switch>
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </Context.Provider>
     </IonApp>
   );
 };

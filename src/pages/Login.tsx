@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
 } from "react";
+import { useHistory } from "react-router-dom";
 import {
   IonContent,
   IonHeader,
@@ -16,17 +17,17 @@ import {
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
+import { Context } from "../Context";
 
-interface LoginProps {
-  isAuthed?: boolean;
-  onLogin?: Function;
-}
-const Login: React.FC<LoginProps> = ({ isAuthed = false }) => {
+const Login: React.FC = () => {
+  const [context, setContext] = useContext(Context);
+  const history = useHistory();
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Login: {isAuthed.toString()}</IonTitle>
+          <IonTitle>Login: context: {context.isAuthed.toString()}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -39,7 +40,9 @@ const Login: React.FC<LoginProps> = ({ isAuthed = false }) => {
         <IonButton
           onClick={(e) => {
             console.log("e", e);
-            console.log("isAuthed", isAuthed);
+            console.log("isAuthed", context.isAuthed);
+            setContext({ isAuthed: true });
+            history.replace("/");
           }}
         >
           Login
