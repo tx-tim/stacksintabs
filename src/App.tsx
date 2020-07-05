@@ -51,13 +51,6 @@ const App: React.FC = () => {
         <IonReactRouter>
           <IonRouterOutlet>
             <Switch>
-              {/* <Route
-              exact
-              path="/hio"
-              render={(props) => {
-                return context.isAuthed ? <Hio /> : <Login />;
-              }}
-            /> */}
               <Route path="/login" component={Login} exact />
               <Route path="/hio" component={Hio} exact />
               <Route
