@@ -39,11 +39,13 @@ import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 import { Context } from "./Context";
+import { useHistory } from "react-router-dom";
 
 const App: React.FC = () => {
   const [context, setContext] = useState({ isAuthed: false });
+
   useEffect(() => {
-    console.log("app level context", context);
+    console.log("app level context in useEffect", context);
   });
   return (
     <IonApp>
@@ -51,8 +53,6 @@ const App: React.FC = () => {
         <IonReactRouter>
           <IonRouterOutlet>
             <Switch>
-              <Route path="/login" component={Login} exact />
-              <Route path="/hio" component={Hio} exact />
               <Route
                 path="/"
                 exact
@@ -65,6 +65,8 @@ const App: React.FC = () => {
                   );
                 }}
               />
+              <Route path="/login" component={Login} exact />
+              <Route path="/hio" component={Hio} exact />
             </Switch>
           </IonRouterOutlet>
         </IonReactRouter>

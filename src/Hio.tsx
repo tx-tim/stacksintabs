@@ -1,7 +1,6 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import {
-  IonApp,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
@@ -9,6 +8,14 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
+import {
+  useState,
+  useReducer,
+  createContext,
+  useContext,
+  useEffect,
+} from "react";
+import { useHistory } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
 import { ellipse, square, triangle } from "ionicons/icons";
 import Tab1 from "./pages/Tab1";
@@ -34,38 +41,33 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-interface HioProps {
-  isAuthed: boolean;
-}
-const Hio: React.FC = () => (
-  <IonReactRouter>
-    <IonTabs>
-      <IonRouterOutlet>
-        <Route path="/tab1" component={Tab1} exact={true} />
-        <Route path="/tab2" component={Tab2} exact={true} />
-        <Route path="/tab3" component={Tab3} />
-        <Route
-          path="/hio"
-          render={() => <Redirect to="/tab1" />}
-          exact={true}
-        />
-      </IonRouterOutlet>
-      <IonTabBar slot="bottom">
-        <IonTabButton tab="tab1" href="/tab1">
-          <IonIcon icon={triangle} />
-          <IonLabel>Tab 1</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab2" href="/tab2">
-          <IonIcon icon={ellipse} />
-          <IonLabel>Tab 2</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab3" href="/tab3">
-          <IonIcon icon={square} />
-          <IonLabel>Tab 3</IonLabel>
-        </IonTabButton>
-      </IonTabBar>
-    </IonTabs>
-  </IonReactRouter>
-);
+const Hio: React.FC = () => {
+  return (
+    <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route path="/tab1" component={Tab1} exact={true} />
+          <Route path="/tab2" component={Tab2} exact={true} />
+          <Route path="/tab3" component={Tab3} />
+          <Route path="/hio" exact render={() => <Redirect to="/tab1" />} />
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="tab1" href="/tab1">
+            <IonIcon icon={triangle} />
+            <IonLabel>Tab 1 </IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab2" href="/tab2">
+            <IonIcon icon={ellipse} />
+            <IonLabel>Tab 2</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab3" href="/tab3">
+            <IonIcon icon={square} />
+            <IonLabel>Tab 3</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </IonReactRouter>
+  );
+};
 
 export default Hio;
