@@ -52,22 +52,20 @@ const App: React.FC = () => {
       <Context.Provider value={[context, setContext]}>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Switch>
-              <Route
-                path="/"
-                exact
-                render={() => {
-                  console.log("router isAuthed", context.isAuthed);
-                  return context.isAuthed ? (
-                    <Redirect to="/hio" />
-                  ) : (
-                    <Redirect to="/login" />
-                  );
-                }}
-              />
-              <Route path="/login" component={Login} exact />
-              <Route path="/hio" component={Hio} exact />
-            </Switch>
+            <Route
+              path="/"
+              exact
+              render={() => {
+                console.log("router isAuthed", context.isAuthed);
+                return context.isAuthed ? (
+                  <Redirect to="/hio" />
+                ) : (
+                  <Redirect to="/login" />
+                );
+              }}
+            />
+            <Route path="/login" component={Login} exact />
+            <Route path="/hio" component={Hio} exact />
           </IonRouterOutlet>
         </IonReactRouter>
       </Context.Provider>
