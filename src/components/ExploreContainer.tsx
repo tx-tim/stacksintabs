@@ -38,17 +38,21 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
           UI Components
         </a>
       </p>
-
-      <IonButton
-        onClick={(e) => {
-          console.log("e", e);
-          setContext({ isAuthed: false });
-          console.log("isAuthed in explorecontainer", context.isAuthed);
-          history.push("/login");
-        }}
-      >
-        Logout
-      </IonButton>
+      {context.isAuthed && (
+        <IonButton
+          onClick={(e) => {
+            console.log("e", e);
+            setContext({ isAuthed: false });
+            console.log(
+              "isAuthed in explorecontainer context.isAuthed",
+              context.isAuthed
+            );
+            history.replace("/login");
+          }}
+        >
+          Logout
+        </IonButton>
+      )}
     </div>
   );
 };

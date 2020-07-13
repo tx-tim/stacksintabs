@@ -17,7 +17,9 @@ const Tab3: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 3 auth: {context.isAuthed.toString()}</IonTitle>
+          <IonTitle>
+            Tab 3 context.isAuth: {context.isAuthed.toString()}
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

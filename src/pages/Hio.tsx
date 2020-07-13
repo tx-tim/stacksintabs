@@ -7,6 +7,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
+  IonPage,
 } from "@ionic/react";
 import {
   useState,
@@ -18,9 +19,9 @@ import {
 import { useHistory } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
 import { ellipse, square, triangle } from "ionicons/icons";
-import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
+import Tab1 from "./Tab1";
+import Tab2 from "./Tab2";
+import Tab3 from "./Tab3";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -39,7 +40,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
+import "../theme/variables.css";
 
 const Hio: React.FC = () => {
   return (

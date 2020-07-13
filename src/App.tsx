@@ -18,10 +18,8 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { ellipse, square, triangle } from "ionicons/icons";
-import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
 import Login from "./pages/Login";
-import Hio from "./Hio";
+import Hio from "./pages/Hio";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -45,7 +43,7 @@ const App: React.FC = () => {
   const [context, setContext] = useState({ isAuthed: false });
 
   useEffect(() => {
-    console.log("app level context in useEffect", context);
+    console.log("App #useEffect", context);
   });
   return (
     <IonApp>
@@ -57,7 +55,10 @@ const App: React.FC = () => {
                 path="/"
                 exact
                 render={() => {
-                  console.log("router isAuthed", context.isAuthed);
+                  console.log(
+                    "App - route render redirect context.isAuthed",
+                    context.isAuthed
+                  );
                   return context.isAuthed ? (
                     <Redirect to="/hio" />
                   ) : (
